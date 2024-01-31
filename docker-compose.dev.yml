@@ -9,5 +9,11 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres:/var/lib/postgresql/data
+  mqtt:
+    image: 'hivemq/hivemq-ce:latest'
+    ports:
+      - ${MQTT_PORT}:1883
+      - 8000:8000
+
 volumes:
   postgres: ~
