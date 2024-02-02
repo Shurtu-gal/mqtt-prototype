@@ -26,6 +26,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      mqtt:
+        condition: service_healthy
   db:
     image: postgres:12
     ports:
@@ -43,5 +45,16 @@ services:
       timeout: 45s
       interval: 10s
       retries: 10
+  mqtt:
+    image: emqx:5.4.0
+    ports:
+      - ${MQTT_PORT}:1883
+      - ${MQTT_WS_PORT}:8083
+      - ${MQTT_WEB_UI_PORT}:18083
+    healthcheck:
+      test: ["CMD", "/opt/emqx/bin/emqx", "ctl", "status"]
+      interval: 5s
+      timeout: 25s
+      retries: 5
 volumes:
   postgres: ~

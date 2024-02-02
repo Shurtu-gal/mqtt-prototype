@@ -13,10 +13,12 @@ import { ServeStaticOptionsService } from "./serveStaticOptions.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
+import { MqttModule } from "./mqtt/mqtt.module";
 
 @Module({
   controllers: [],
   imports: [
+    MqttModule,
     UserModule,
     ProfileModule,
     OrderModule,
