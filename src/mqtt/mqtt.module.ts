@@ -4,6 +4,7 @@ import { ClientProxyFactory } from "@nestjs/microservices";
 import { generateClientOptions } from "./generateClientOptions";
 import { MqttProducerService } from "./mqtt.producer.service";
 import { MqttController } from "./mqtt.controller";
+import { SparkplugService } from './sparkplug.service';
 
 @Global()
 @Module({
@@ -18,10 +19,11 @@ import { MqttController } from "./mqtt.controller";
       },
       inject: [ConfigService],
     },
-    MqttProducerService
+    MqttProducerService,
+    SparkplugService
   ],
   controllers: [MqttController],
-  exports: [MqttProducerService],
+  exports: [MqttProducerService, SparkplugService],
 })
 
 export class MqttModule {}

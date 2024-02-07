@@ -47,6 +47,7 @@
     "passport-http": "0.3.0",
     "passport-jwt": "4.0.1",
     "reflect-metadata": "0.1.13",
+    "sparkplug-client": "^3.2.4",
     "ts-node": "10.9.1",
     "type-fest": "2.19.0",
     "validator": "13.11.0"
